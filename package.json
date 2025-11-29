@@ -1,0 +1,16 @@
+{
+    "name": "cyber-chat-root",
+    "version": "1.0.0",
+    "description": "Secure Chat Application Root",
+    "scripts": {
+        "start": "cd backend && node src/server.js",
+        "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+        "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\""
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    }
+}
