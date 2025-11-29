@@ -18,6 +18,21 @@ const WebRTCCall = forwardRef(({ selectedUser, myUserId, onEndCall, users = [] }
   const localStreamRef = useRef(null);
   const peerConnectionRef = useRef(null);
   const socketRef = useRef(null);
+  const audioRef = useRef(new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg")); // Placeholder ringtone
+
+  useEffect(() => {
+    // Loop the ringtone
+    audioRef.current.loop = true;
+  }, []);
+
+  useEffect(() => {
+    if (callState === "calling" || (isIncomingCall && callState === "ringing")) {
+      audioRef.current.play().catch(e => console.log("Audio play failed (interaction needed):", e));
+    } else {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [callState, isIncomingCall]);
 
   useImperativeHandle(ref, () => ({
     startCall: (type) => startCall(type)

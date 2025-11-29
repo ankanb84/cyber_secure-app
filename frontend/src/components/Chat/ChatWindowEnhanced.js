@@ -962,14 +962,6 @@ export default function ChatWindowEnhanced({ token, selectedUser, myUserId, onSe
           >
             👁️ {isViewOnce ? "1" : "Once"}
           </button>
-          <button
-            type="button"
-            className="secondary-btn"
-            onClick={() => setSelfDestructSeconds(selfDestructSeconds > 0 ? 0 : 60)}
-            style={{ fontSize: "14px", padding: "4px 8px" }}
-          >
-            💣 {selfDestructSeconds > 0 ? `${selfDestructSeconds}s` : "Self-destruct"}
-          </button>
         </div>
 
         {showScheduleModal && (

@@ -17,6 +17,28 @@ router.get('/me', async (req, res) => {
   }
 });
 
+// Update current user profile
+router.put('/me', async (req, res) => {
+  try {
+    const { name, profilePicture } = req.body;
+    const updates = {};
+    if (name) updates.name = name;
+    if (profilePicture) updates.profilePicture = profilePicture;
+
+    const user = await User.findByIdAndUpdate(
+      req.user.userId,
+      { $set: updates },
+      { new: true, select: 'name username email phone profilePicture settings' }
+    );
+
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    console.error("Profile update error:", err);
+    res.status(500).json({ error: 'Failed to update profile' });
+  }
+});
+
 // Get all users (except current user) - for searching/finding new friends
 router.get('/', async (req, res) => {
   try {

@@ -80,6 +80,8 @@ body {
   display: grid;
   grid-template-columns: 350px 1fr;
   height: 100vh;
+  /* Fallback */
+  height: 100dvh;
   max-width: 1800px;
   margin: 0 auto;
   gap: 24px;
