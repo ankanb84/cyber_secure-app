@@ -113,13 +113,14 @@ export default function SettingsPanel({ onEvent }) {
   }, []);
 
   return (
+    <div className="info-section">
       <div style={{ marginBottom: "24px", textAlign: "center" }}>
-        <div style={{ 
-          width: "100px", 
-          height: "100px", 
-          borderRadius: "50%", 
-          margin: "0 auto 16px", 
-          overflow: "hidden", 
+        <div style={{
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          margin: "0 auto 16px",
+          overflow: "hidden",
           border: "2px solid var(--primary)",
           position: "relative",
           background: "var(--glass-surface)"
@@ -143,11 +144,11 @@ export default function SettingsPanel({ onEvent }) {
             cursor: "pointer"
           }}>
             CHANGE
-            <input 
-              type="file" 
-              accept="image/*" 
-              onChange={handleProfilePictureChange} 
-              style={{ display: "none" }} 
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfilePictureChange}
+              style={{ display: "none" }}
             />
           </label>
         </div>
@@ -156,7 +157,7 @@ export default function SettingsPanel({ onEvent }) {
       </div>
 
       <h4 style={{ marginTop: 0 }}>Privacy Settings</h4>
-      
+
       <div style={{ marginBottom: "16px" }}>
         <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
           <input
@@ -201,7 +202,7 @@ export default function SettingsPanel({ onEvent }) {
           <option value="auto">Auto (System)</option>
         </select>
       </div>
-    </div >
+    </div>
   );
 }
 
